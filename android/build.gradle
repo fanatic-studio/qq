@@ -1,0 +1,43 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion project.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion project.appMinSdkVersion
+        targetSdkVersion project.targetSdkVersion
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //
+    compileOnly "androidx.legacy:legacy-support-v4:${supportv4Version}"
+    compileOnly "androidx.recyclerview:recyclerview:${recyclerviewVersion}"
+    compileOnly "com.google.android.material:material:${materialVersion}"
+    compileOnly "com.alibaba:fastjson:${project.fastjsonLibVersion}"
+    compileOnly "org.apache.weex:sdk_legacy:${project.weex_sdkLibVersion}"
+    //
+    compileOnly project(":vd")
+}
