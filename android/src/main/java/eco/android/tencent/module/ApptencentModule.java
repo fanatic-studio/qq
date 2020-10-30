@@ -1,4 +1,4 @@
-package vd.android.tencent.module;
+package eco.android.tencent.module;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,13 +23,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import app.vd.framework.activity.PageActivity;
-import app.vd.framework.extend.module.vdCommon;
-import app.vd.framework.extend.module.vdJson;
-import app.vd.framework.extend.module.vdMap;
-import app.vd.framework.extend.module.vdParse;
+import app.eco.framework.activity.PageActivity;
+import app.eco.framework.extend.module.ecoCommon;
+import app.eco.framework.extend.module.ecoJson;
+import app.eco.framework.extend.module.ecoMap;
+import app.eco.framework.extend.module.ecoParse;
 
-import static vd.android.tencent.entry.tencentEntry.mTencent;
+import static eco.android.tencent.entry.tencentEntry.mTencent;
 
 public class ApptencentModule extends WXModule {
 
@@ -95,7 +95,7 @@ public class ApptencentModule extends WXModule {
                         data.put("openid", openId);
                         data.put("access_token", token);
                         data.put("expires_in", expires);
-                        data.put("create_at", vdCommon.timeStamp());
+                        data.put("create_at", ecoCommon.timeStamp());
                     }
                 } catch (Exception ignored) {
                     //
@@ -129,10 +129,10 @@ public class ApptencentModule extends WXModule {
 
             @Override
             public void invokeAndKeepAlive(Object data) {
-                Map<String, Object> retData = vdMap.objectToMap(data);
-                if (retData != null && vdParse.parseStr(retData.get("status")).equals("activityResult")) {
-                    int requestCode = vdParse.parseInt(retData.get("requestCode"));
-                    int resultCode = vdParse.parseInt(retData.get("resultCode"));
+                Map<String, Object> retData = ecoMap.objectToMap(data);
+                if (retData != null && ecoParse.parseStr(retData.get("status")).equals("activityResult")) {
+                    int requestCode = ecoParse.parseInt(retData.get("requestCode"));
+                    int resultCode = ecoParse.parseInt(retData.get("resultCode"));
                     Intent intent = (Intent) retData.get("resultData");
                     if (requestCode == Constants.REQUEST_LOGIN || requestCode == Constants.REQUEST_APPBAR) {
                         Tencent.onActivityResultData(requestCode, resultCode, intent, baseUiListener);
@@ -198,7 +198,7 @@ public class ApptencentModule extends WXModule {
                     callback.invoke(data);
                     return;
                 }
-                com.alibaba.fastjson.JSONObject data = vdJson.parseObject(response);
+                com.alibaba.fastjson.JSONObject data = ecoJson.parseObject(response);
                 data.put("status", "success");
                 data.put("body", "获取成功");
                 callback.invoke(data);
@@ -270,7 +270,7 @@ public class ApptencentModule extends WXModule {
                 }
                 Map<String, Object> data = new HashMap<>();
                 data.put("status", "success");
-                data.put("body", vdJson.parseObject(response));
+                data.put("body", ecoJson.parseObject(response));
                 finalCallback.invoke(data);
             }
 
@@ -300,10 +300,10 @@ public class ApptencentModule extends WXModule {
 
             @Override
             public void invokeAndKeepAlive(Object data) {
-                Map<String, Object> retData = vdMap.objectToMap(data);
-                if (retData != null && vdParse.parseStr(retData.get("status")).equals("activityResult")) {
-                    int requestCode = vdParse.parseInt(retData.get("requestCode"));
-                    int resultCode = vdParse.parseInt(retData.get("resultCode"));
+                Map<String, Object> retData = ecoMap.objectToMap(data);
+                if (retData != null && ecoParse.parseStr(retData.get("status")).equals("activityResult")) {
+                    int requestCode = ecoParse.parseInt(retData.get("requestCode"));
+                    int resultCode = ecoParse.parseInt(retData.get("resultCode"));
                     Intent intent = (Intent) retData.get("resultData");
                     if (requestCode == Constants.REQUEST_OLD_SHARE || requestCode == Constants.REQUEST_QQ_SHARE) {
                         Tencent.onActivityResultData(requestCode, resultCode, intent, baseUiListener);
@@ -313,10 +313,10 @@ public class ApptencentModule extends WXModule {
         });
         //
         Bundle params = new Bundle();
-        params.putString(QQShare.SHARE_TO_QQ_TITLE, vdJson.getString(json, "title"));
-        params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, vdJson.getString(json, "url"));
-        params.putString(QQShare.SHARE_TO_QQ_SUMMARY, vdJson.getString(json, "desc"));
-        params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, vdJson.getString(json, "imgUrl"));
+        params.putString(QQShare.SHARE_TO_QQ_TITLE, ecoJson.getString(json, "title"));
+        params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, ecoJson.getString(json, "url"));
+        params.putString(QQShare.SHARE_TO_QQ_SUMMARY, ecoJson.getString(json, "desc"));
+        params.putString(QQShare.SHARE_TO_QQ_IMAGE_URL, ecoJson.getString(json, "imgUrl"));
         params.putInt(QQShare.SHARE_TO_QQ_KEY_TYPE, QQShare.SHARE_TO_QQ_TYPE_DEFAULT);
         mTencent.shareToQQ(mActivity, params, baseUiListener);
     }
@@ -373,10 +373,10 @@ public class ApptencentModule extends WXModule {
 
             @Override
             public void invokeAndKeepAlive(Object data) {
-                Map<String, Object> retData = vdMap.objectToMap(data);
-                if (retData != null && vdParse.parseStr(retData.get("status")).equals("activityResult")) {
-                    int requestCode = vdParse.parseInt(retData.get("requestCode"));
-                    int resultCode = vdParse.parseInt(retData.get("resultCode"));
+                Map<String, Object> retData = ecoMap.objectToMap(data);
+                if (retData != null && ecoParse.parseStr(retData.get("status")).equals("activityResult")) {
+                    int requestCode = ecoParse.parseInt(retData.get("requestCode"));
+                    int resultCode = ecoParse.parseInt(retData.get("resultCode"));
                     Intent intent = (Intent) retData.get("resultData");
                     if (requestCode == Constants.REQUEST_OLD_SHARE || requestCode == Constants.REQUEST_QQ_SHARE) {
                         Tencent.onActivityResultData(requestCode, resultCode, intent, baseUiListener);
@@ -387,17 +387,17 @@ public class ApptencentModule extends WXModule {
         //
         Bundle params = new Bundle();
         params.putInt(QzoneShare.SHARE_TO_QZONE_KEY_TYPE, QzoneShare.SHARE_TO_QZONE_TYPE_IMAGE_TEXT);
-        params.putString(QQShare.SHARE_TO_QQ_TITLE, vdJson.getString(json, "title"));
-        params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, vdJson.getString(json, "url"));
-        params.putString(QQShare.SHARE_TO_QQ_SUMMARY, vdJson.getString(json, "desc"));
+        params.putString(QQShare.SHARE_TO_QQ_TITLE, ecoJson.getString(json, "title"));
+        params.putString(QQShare.SHARE_TO_QQ_TARGET_URL, ecoJson.getString(json, "url"));
+        params.putString(QQShare.SHARE_TO_QQ_SUMMARY, ecoJson.getString(json, "desc"));
         //
-        JSONArray array = vdJson.parseArray(json.get("imgUrl"));
-        if (array.size() == 0 && !TextUtils.isEmpty(vdJson.getString(json, "imgUrl"))) {
-            array.add(vdJson.getString(json, "imgUrl"));
+        JSONArray array = ecoJson.parseArray(json.get("imgUrl"));
+        if (array.size() == 0 && !TextUtils.isEmpty(ecoJson.getString(json, "imgUrl"))) {
+            array.add(ecoJson.getString(json, "imgUrl"));
         }
         ArrayList<String> imageUrls = new ArrayList<String>();
         for (int i = 0; i < array.size(); i++) {
-            imageUrls.add(vdParse.parseStr(array.get(i)));
+            imageUrls.add(ecoParse.parseStr(array.get(i)));
         }
         params.putStringArrayList(QQShare.SHARE_TO_QQ_IMAGE_URL, imageUrls);
         mTencent.shareToQzone(mActivity, params, baseUiListener);

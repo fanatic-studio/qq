@@ -3,25 +3,25 @@
 ## 安装
 
 ```shell script
-vd plugin install https://github.com/ivde/qq
+eco plugin install https://github.com/kjeco/qq
 ```
 
 ## 卸载
 
 ```shell script
-vd plugin uninstall https://github.com/ivde/qq
+eco plugin uninstall https://github.com/kjeco/qq
 ```
 
 ## 引用
 
 ```js
-const qq = app.requireModule("vd/qq");
+const qq = app.requireModule("eco/qq");
 ```
 
 ## 参数配置
 
 
-[vd.config.js](https://vd.app/guide/config.html)文件添加以下参数：
+[eco.config.js](https://eco.app/guide/config.html)文件添加以下参数：
 
 ```
 

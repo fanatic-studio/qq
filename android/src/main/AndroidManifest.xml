@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="vd.android.tencent">
+    package="eco.android.tencent">
 
     <application>
         <uses-library android:name="org.apache.http.legacy" android:required="false" />

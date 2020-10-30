@@ -6,8 +6,8 @@ const utils = require('./utils');
 
 (function(){
     let workPath = process.cwd();
-    let infoPath = path.join(workPath, 'platforms/ios/vdApp/vdApp/Info.plist');
-    let configPath = path.join(workPath, 'vd.config.js');
+    let infoPath = path.join(workPath, 'platforms/ios/ecoApp/ecoApp/Info.plist');
+    let configPath = path.join(workPath, 'eco.config.js');
     //
     if (!fs.existsSync(infoPath) || !fs.existsSync(configPath)) {
         return;

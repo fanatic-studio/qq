@@ -21,7 +21,7 @@ WXModuleCallback _mycall;
     _oauth = [[TencentOAuth alloc] initWithAppId:tencent[@"appid"] andDelegate:self];
 }
 
-WX_PlUGIN_EXPORT_MODULE(vdQq, ApptencentModule)
+WX_PlUGIN_EXPORT_MODULE(ecoQq, ApptencentModule)
 WX_EXPORT_METHOD_SYNC(@selector(isQQInstalled))
 WX_EXPORT_METHOD(@selector(login:))
 WX_EXPORT_METHOD(@selector(logout))
